@@ -2,37 +2,37 @@
 
 Title: `chore: maintain project skills (<YYYY-MM-DD>)`
 
-Every section below appears, even when its content is "none". Evidence is pasted inline, never referenced by a scratch path, because the scratch directory may not outlive the session.
+Every section below appears, even when its content is "none". Evidence is pasted inline, never referenced by a scratch path, because scratch space may not outlive the session.
 
 ---
 
-## Outcome
+## Result
 
-`changed`. Mode: `audit` | `propagate "<change statement>"`. `<n>` owned skills covered, `<n>` vendored skills reported.
+`updated`. Job: `review` | `apply "<change statement>"`. `<n>` owned skills reviewed, `<n>` third-party skills listed.
 
-## Corrections shipped
+## Fixes delivered
 
-| Skill | Class | Skill text before | Evidence | Fix | Proof |
+| Skill | Kind | Text before | Evidence | Fix | Confirmed by |
 |---|---|---|---|---|---|
-| `<name>` | structural / behavioral / external-fact / shape | `<quote, file:line>` | `<path:line>` | `<one sentence>` | citation check / citation check + dry-run |
+| `<name>` | broken reference / behavior mismatch / outside claim / shape | `<quote, file:line>` | `<path:line>` | `<one sentence>` | reference check / reference check + trial run |
 
-## Dry-run records
+## Trial runs
 
-For each dry-run: the command exactly as the skill documents it, the isolation used (worktree path), the exit code, and the last lines of output.
+For each trial run: the command exactly as the skill documents it, the worktree used, the exit code, and the last lines of output.
 
-## Unproven, held back
+## Unconfirmed, reverted
 
-Corrections reverted because their dry-run could not run. Each with the missing prerequisite and the route attempted.
+Fixes reverted because their trial run could not happen. Each with the missing prerequisite and the route tried.
 
 ## Unverifiable
 
-Citations and external-fact claims left as written. Each with the prerequisite and the route attempted.
+References and outside claims left as written. Each with the prerequisite and the route tried.
 
-## Product gaps
+## App regressions
 
-Application behavior the skills describe correctly that source shows broken. Not fixed here; needs a human decision.
+Application behavior the skills describe correctly that the code shows to be broken. Not repaired here; needs a human decision.
 
-## Vendored skills
+## Third-party skills
 
 | Skill | Hash status |
 |---|---|
@@ -42,4 +42,4 @@ A `modified` skill has been hand-edited. The next `npx skills update` discards t
 
 ## Coverage
 
-Skills covered, and any step skipped as `skip: <reason>`.
+Skills reviewed, and any phase skipped with its reason.

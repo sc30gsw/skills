@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 # list-skills.sh [repo-root]
 #
-# Enumerate every skill installed in a project, mark each as owned or vendored,
-# and for vendored skills check whether the directory still matches the hash
+# Enumerate every skill installed in a project, mark each as owned or third-party,
+# and for third-party skills check whether the directory still matches the hash
 # recorded in skills-lock.json. Read-only. Bash 3.2 compatible.
 #
 # Output (TSV, header line starts with #):
 #   path  dir_name  frontmatter_name  kind  status
-#     kind    owned | vendored
+#     kind    owned | third-party
 #     status  owned                       (owned skills)
-#             match | modified | unknown  (vendored skills)
+#             match | modified | unknown  (third-party skills)
 #
-# Vendored means the directory name appears under "skills" in the project's
+# Third-party means the directory name appears under "skills" in the project's
 # root skills-lock.json, the lock written by `npx skills add`. No lock file
 # means every skill is owned.
 #
@@ -113,7 +113,7 @@ while IFS= read -r d; do
   fm="$(frontmatter_name "$d")"; [ -n "$fm" ] || fm="-"
   lockhash="$(awk -F'\t' -v k="$name" '$1 == k { print $2; exit }' "$lock_tsv")"
   if [ -n "$lockhash" ]; then
-    kind=vendored; n_vendored=$((n_vendored + 1))
+    kind=third-party; n_vendored=$((n_vendored + 1))
     if [ "$lockhash" = "-" ] || [ "$have_node" -eq 0 ]; then
       status=unknown
     else
@@ -127,5 +127,5 @@ while IFS= read -r d; do
 done < "$dirs"
 
 if [ -f skills-lock.json ]; then lockmsg="skills-lock.json"; else lockmsg="no lock file (all skills owned)"; fi
-if [ "$have_node" -eq 1 ]; then nodemsg="node present"; else nodemsg="node absent (vendored status unknown)"; fi
-printf 'summary: owned=%d vendored=%d modified=%d; %s; %s\n' "$n_owned" "$n_vendored" "$n_modified" "$lockmsg" "$nodemsg" >&2
+if [ "$have_node" -eq 1 ]; then nodemsg="node present"; else nodemsg="node absent (third-party status unknown)"; fi
+printf 'summary: owned=%d third_party=%d modified=%d; %s; %s\n' "$n_owned" "$n_vendored" "$n_modified" "$lockmsg" "$nodemsg" >&2

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# check-citations.sh <skill-dir> [repo-root]
+# check-references.sh <skill-dir> [repo-root]
 #
-# Extract every checkable reference (citation) from a skill's Markdown and
+# Extract every checkable reference from a skill's Markdown and
 # report whether it resolves. Read-only. Bash 3.2 compatible.
 #
 # Output (TSV, header line starts with #):
@@ -19,8 +19,8 @@
 #                          slash command with no project skill of that name, or orphan
 #            unverifiable  command not on PATH (prerequisite: install it)
 #
-# A `missing` row is drift unless the skill's own text says it creates that
-# path or offers it as an example. This script reports; the coordinator decides.
+# A `missing` row is a broken reference unless the skill's own text says it creates
+# that path or offers it as an example. This script reports; the maintainer decides.
 #
 # Paths resolve against the Markdown file's directory, the skill directory, and
 # the repository root, in that order. Globs are expanded (in bash 3.2, ** acts as *).
@@ -29,7 +29,7 @@
 
 set -eu
 
-usage() { echo "usage: check-citations.sh <skill-dir> [repo-root]" >&2; exit 2; }
+usage() { echo "usage: check-references.sh <skill-dir> [repo-root]" >&2; exit 2; }
 [ $# -ge 1 ] || usage
 case "$1" in -h|--help) usage ;; esac
 
