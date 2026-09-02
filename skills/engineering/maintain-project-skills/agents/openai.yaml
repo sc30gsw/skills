@@ -1,0 +1,5 @@
+interface:
+  display_name: "Maintain Project Skills"
+  short_description: "Keep a project's own skills truthful; ship proven fixes as one PR"
+policy:
+  allow_implicit_invocation: false
